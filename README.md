@@ -61,6 +61,28 @@ Ademas de eso al momento de crear el metodo eliminar en la persistencia, y llama
 
 ## Update
 Es como el create, tambien le debo pasar un objeto alumno entero. Lleva un try/catch en persistencia por si me confundo y mando algo mal.
+La modificacio se puede hacer en cualquier atributo del objeto previamente creado, esto se hace con un setter a la propiedad deseada, luego llamamos a un metodo modificar para que lo pase a logica, de logica a persistencia y de persistencia a JPA.
+Importante entender que el setter y la cascada de llamados aranca en el main
+
+## Find
+Para buscar es exactamente lo mismo, la busqueda unitaria se ivoca un metodo en el main, en la logica se crea un metdo CON RETORNO que contacte a persistencia y persistencia crea uno que contacte a jpa.
+
+Para traer a todos los elemntos de la tabla, el metodo del jpa te devuelve un elemento tipo list, asi que hay que crear una list para que reciba ese elemento
 
 
+##  Relacion 1 a 1 
+Creo Clase 
+ - propiedades
+ - constructores
+ - getters y setter
+ - Mapeo 
+En persistencia.xml agrego la clase que cree para que se cree tanto la tabla como otra clase con los metodos.
+Creo la relacion entre clases
+En la clase que yo creo mi objeto debo poner una anotattion para que jpa unit entienda que ambas tablas estan relacionadas
+	@OneToOne
+	private carrera carre 
+Cada vez que agrego atributos hay que cambiar le constructor, los getters y los setters
+Como agregamos eso, hay que crear el jpaController de la clase nueva y crear un JpaController nuevo de mi otra clase ya que le faltan cosas 
+en cada jpa conroller hay que crear un constructor
 
+En mi controladora logica copio los metodos del CRUD y los pego abajo cambiando las clases por carrera y los parametros
